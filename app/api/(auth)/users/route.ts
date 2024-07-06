@@ -1,8 +1,13 @@
 import { connect } from "@/lib/db"
-import { error } from "console";
+import User from "@/lib/models/users";
 import { NextResponse } from "next/server"
 
-export const GET = () =>{
-    connect().catch(console.dir);
-    return NextResponse.json({ message: "Hello World" });
+export const GET = async() =>{
+    try {
+        await connect().catch(console.dir);
+        const users = await User.find();
+        return new NextResponse(JSON.stringify(users))
+    } catch (error:any) {
+        return error
+    }
 }
