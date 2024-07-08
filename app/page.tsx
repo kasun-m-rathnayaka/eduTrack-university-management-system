@@ -1,11 +1,10 @@
-import LoginPage from "@/app/(auth)/LoginPage";
 import Image from "next/image";
-import { Dashboard } from "./Dashboard";
+import SignUp from "./(auth)/signup/page";
 
 export default function Home() {
   return (
     <main>
-      <Dashboard/>
+      <SignUp />
     </main>
   );
 }

@@ -1,9 +1,9 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import Header from "../components/Header";
-import SideBar from "../components/SideBar";
-import SecondaryHeader from "../components/SecondaryHeader";
+import Header from "@/components/Header";
+import SideBar from "@/components/SideBar";
+import SecondaryHeader from "@/components/SecondaryHeader";
 import { Tabs, TabsContent } from "@radix-ui/react-tabs";
-import TableComponent from "../components/ui/TableComponent";
+import TableComponent from "@/components/ui/TableComponent";
 
 export function Dashboard() {
   return (

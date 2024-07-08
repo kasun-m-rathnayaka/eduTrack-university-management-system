@@ -18,6 +18,10 @@ export const connect = async () => {
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
+  }
+  catch(error){
+    console.log("Error" + error)
+    throw new Error
   } finally {
     await client.close();
   }
