@@ -9,6 +9,7 @@ import {
   Package,
   Search,
   Home,
+  UserRound,
 } from "lucide-react";
 
 import {
@@ -31,7 +32,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
-const Header = () => {
+const Header = ({title}: {title: String;}) => {
   return (
     <>
       <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
@@ -92,20 +93,11 @@ const Header = () => {
         <Breadcrumb className="hidden md:flex">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="#">Dashboard</Link>
-              </BreadcrumbLink>
+              <BreadcrumbPage>
+                <Link href="#">{title}</Link>
+              </BreadcrumbPage>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink asChild>
-                <Link href="#">Products</Link>
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>All Products</BreadcrumbPage>
-            </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
         <div className="relative ml-auto flex-1 md:grow-0">
@@ -123,13 +115,14 @@ const Header = () => {
               size="icon"
               className="overflow-hidden rounded-full"
             >
-              <Image
+              {/* <Image
                 src="/placeholder-user.jpg"
                 width={36}
                 height={36}
                 alt="Avatar"
                 className="overflow-hidden rounded-full"
-              />
+              /> */}
+              <UserRound className="h-6 w-6 rounded-full" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
