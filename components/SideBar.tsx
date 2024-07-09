@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Home, ShoppingCart, Package, Users2, LineChart, Package2, Settings } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 const SideBar = () => {
     return (
@@ -14,6 +14,7 @@ const SideBar = () => {
                         <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
                         <span className="sr-only">Acme Inc</span>
                     </Link>
+                    <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link
@@ -73,9 +74,9 @@ const SideBar = () => {
                             </Link>
                         </TooltipTrigger>
                         <TooltipContent side="right">Analytics</TooltipContent>
-                    </Tooltip>
+                    </Tooltip></TooltipProvider>
                 </nav>
-                <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+                <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5"><TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Link
@@ -87,7 +88,7 @@ const SideBar = () => {
                             </Link>
                         </TooltipTrigger>
                         <TooltipContent side="right">Settings</TooltipContent>
-                    </Tooltip>
+                    </Tooltip></TooltipProvider>
                 </nav>
             </aside>
         </>
