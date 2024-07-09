@@ -1,16 +1,40 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/router";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const SignUp = () => {
+  // const router = useRouter();
+  const [user, setUser] = useState({
+    name:"",
+    email:"",
+    password:"",
+    stuid:""
+  });
+
+  const [buttonDisabled, setButtonDisabled ] = useState(false)
+  const handleSubmit = () => {};
+  const onChange = ()=>{
+    // update user state when input changes
+
+  }
+
+  useEffect(()=>{
+    if (user.password.length > 0 || user.name.length > 0 || user.email.length > 0 || user.stuid.length > 0) {
+      setButtonDisabled(false)
+    }else{
+      setButtonDisabled(true)
+    }
+  },[])
   return (
     <>
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
-      <div className="hidden bg-muted lg:block">
+        <div className="hidden bg-muted lg:block">
           <Image
             src="/img/signup.png"
             alt="Image"
@@ -30,12 +54,7 @@ const SignUp = () => {
             <div className="grid gap-4">
               <div className="grid gap-2">
                 <Label htmlFor="name">Full Name</Label>
-                <Input
-                  id="name"
-                  type="text"
-                  placeholder="Jhone Doe"
-                  required
-                />
+                <Input id="name" type="text" placeholder="Jhone Doe" required />
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -56,16 +75,16 @@ const SignUp = () => {
                 />
               </div>
               <div className="grid gap-2">
-                <Label htmlFor="email">Address</Label>
+                <Label htmlFor="email">Student ID</Label>
                 <Input
-                  id="address"
-                  type="address"
-                  placeholder="address"
+                  id="stuId"
+                  type="stuId"
+                  placeholder="SD000001"
                   required
                 />
               </div>
-              <Button type="submit" className="w-full">
-                Login
+              <Button type="submit" className="w-full" onClick={handleSubmit}>
+                Sign Up
               </Button>
               {/* <Button variant="outline" className="w-full">
                 Login with Google
@@ -79,7 +98,6 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </>
   );
