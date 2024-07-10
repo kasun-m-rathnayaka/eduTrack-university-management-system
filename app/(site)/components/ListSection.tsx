@@ -1,25 +1,20 @@
 
+import Image from 'next/image';
 import React from 'react'
 
 const ListSection = () => {
     const listItems = [
         {
-          title: `Designers`,
-          description: `Officia et fugiat mollit qui. Dolor elit aliqua voluptate ipsum
-          excepteur cillum consequat consectetur duis magna qui eu consequat occaecat.
-          Deserunt nisi sit.`,
+          title: `Efficient Management`,
+          description: `Streamline and automate university operations to reduce administrative workload.`,
         },
         {
-          title: `Developers`,
-          description: `Pariatur consectetur laboris exercitation duis laboris.
-          Commodo duis fugiat magna fugiat et ut anim elit. Tempor aute ex qui
-          tempor tempor.`,
+          title: `Improved Communication`,
+          description: ` Facilitate better communication between students, faculty, and administrative staff.`,
         },
         {
-          title: `Product owners`,
-          description: `Ullamco consectetur ipsum eiusmod nisi adipisicing sint anim
-          dolore aute excepteur. Voluptate ea ullamco sunt eu elit qui aliquip.
-          Adipisicing.`,
+          title: `Easy Access to Information`,
+          description: `Provide students, faculty, and staff with easy access to vital information and services.`,
         },
       ];
       
@@ -30,16 +25,16 @@ const ListSection = () => {
         <h2
           className={`text-base text-indigo-600 font-semibold tracking-wide uppercase`}
         >
-          Grow your revenue
+          Objectives
         </h2>
         <p
           className={`mt-2 pb-4 text-5xl lg:text-7xl font-bold tracking-tight text-gray-900`}
         >
-          Transform your business
+          Transform into Digital Education
         </p>
       </div>
-      <div className={`flex flex-wrap -mx-8 items-center`}>
-        <div className={`w-full lg:w-1/2 px-8`}>
+      <div className={`flex flex-col md:flex-row -mx-8 items-center justify-center`}>
+        <div className={`w-full md:w-1/2 px-8`}>
           <ul className={`space-y-12`}>
             {listItems.map((item, index) => (
               <li className={`flex -mx-4`} key={item.title}>
@@ -62,11 +57,11 @@ const ListSection = () => {
             ))}
           </ul>
         </div>
-        <div className={`w-full lg:w-1/2 px-8`}>
+        <div className={`w-full md:w-1/2`}>
           <div
             className={`lg:mb-12 pb-12 lg:pb-0 mt-16 lg:mt-0 mx-6 lg:mx-0`}
           >
-            {/* <FeatureSvg width="100%" height="100%" /> */}
+            <Image src={'/site/uni.avif'} width={500} height={500} alt='uni' className=' rounded-md'/>
           </div>
         </div>
       </div>

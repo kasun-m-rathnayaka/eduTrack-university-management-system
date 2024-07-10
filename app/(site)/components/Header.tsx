@@ -7,15 +7,15 @@ const Header = () => {
       <header className={""}>
         <div className={`max-w-4xl mx-auto py-16 px-14 sm:px-6 lg:px-8`}>
           <h1
-            className={`font-sans font-bold text-4xl md:text-5xl lg:text-8xl text-center leading-snug text-gray-800`}
+            className={`font-sans font-bold text-6xl md:text-5xl lg:text-8xl text-center  text-gray-800 capitalize`}
           >
-            Your website, beyond expectations
+           Empower our <span className="text-primary-text">community</span>
           </h1>
-          <div className={`max-w-xl mx-auto`}>
+          <div className={`w-full mx-auto`}>
             <p
-              className={`mt-10 text-gray-500 text-center text-xl lg:text-3xl`}
+              className={`mt-10 text-gray-500 text-center text-base lg:text-xl`}
             >
-              Make your website wonderful and build beyond your expectations.
+              with seamless, integrated solutions for admissions, enrollment, academic management, and more. Experience a new era of efficiency and connectivity
             </p>
           </div>
           <div
