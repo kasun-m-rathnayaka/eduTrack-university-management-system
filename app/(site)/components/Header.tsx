@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React from "react";
 
-const Header = () => {
+const Header = ({ title, colored }: { title: string; colored: string }) => {
   return (
     <div>
       <header className={""}>
@@ -9,13 +9,16 @@ const Header = () => {
           <h1
             className={`font-sans font-bold text-6xl md:text-5xl lg:text-8xl text-center  text-gray-800 capitalize`}
           >
-           Empower our <span className="text-primary-text">community</span>
+            {title}
+            <span className="text-primary-text">{colored}</span>
           </h1>
           <div className={`w-full mx-auto`}>
             <p
               className={`mt-10 text-gray-500 text-center text-base lg:text-xl`}
             >
-              with seamless, integrated solutions for admissions, enrollment, academic management, and more. Experience a new era of efficiency and connectivity
+              with seamless, integrated solutions for admissions, enrollment,
+              academic management, and more. Experience a new era of efficiency
+              and connectivity
             </p>
           </div>
           <div

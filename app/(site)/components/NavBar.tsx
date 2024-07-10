@@ -35,7 +35,9 @@ const NavBar = () => {
           <div>
             <ul className="flex gap-5 items-center text-sm">
               <li>
-                <Button>Login</Button>
+                <Link href={"/login"}>
+                  <Button>Login</Button>
+                </Link>
               </li>
               <li className=" hidden md:block">
                 <Link href={"/signup"}>

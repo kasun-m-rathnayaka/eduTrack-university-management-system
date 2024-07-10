@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <div>
       <NavBar/>
-      <Header />
+      <Header title="Empower our " colored="community"/>
       <main>
         <ListSection />
         <FeatureSection />
