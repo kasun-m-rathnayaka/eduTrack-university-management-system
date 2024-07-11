@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const SignUp = () => {
   const router = useRouter();
@@ -20,20 +21,19 @@ const SignUp = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
   const handleSubmit = () => {
     try {
-      setLoading(true)
-      const response = axios.post('/api/users',user)
-      router.push('/login')
-      
+      setLoading(true);
+      const response = axios.post("/api/users", user);
+      toast.success("User Successfully Created ! ");
+      router.push("/login");
     } catch (error: any) {
-      console.log({"sign up failed":error})
-    }finally{
-      setLoading(true)
+      console.log({ "sign up failed": error });
+    } finally {
+      setLoading(true);
     }
   };
-  console.log(user)
+  console.log(user);
 
   useEffect(() => {
     if (
@@ -62,7 +62,9 @@ const SignUp = () => {
         <div className="flex items-center justify-center py-12">
           <div className="mx-auto grid w-[350px] gap-6">
             <div className="grid gap-2 text-center">
-              <h1 className="text-3xl font-bold">{loading ? "Processing ..." : "Sign Up"}</h1>
+              <h1 className="text-3xl font-bold">
+                {loading ? "Processing ..." : "Sign Up"}
+              </h1>
               <p className="text-balance text-muted-foreground">
                 Enter your email below to create your new student account
               </p>
@@ -107,10 +109,19 @@ const SignUp = () => {
                   type="stuId"
                   placeholder="SD000001"
                   onChange={(e) => setUser({ ...user, stuid: e.target.value })}
+                  onClick={(e)=> setButtonDisabled(false)}
                   required
                 />
               </div>
-              <Button type="submit" className={`w-full ${buttonDisabled? 'bg-gray-500 hover:bg-gray-500' : 'bg-primary-text'}`}  onClick={handleSubmit}>
+              <Button
+                type="submit"
+                className={`w-full ${
+                  buttonDisabled
+                    ? "bg-gray-500 hover:bg-gray-500"
+                    : "bg-primary-text"
+                }`}
+                onClick={handleSubmit}
+              >
                 Sign Up
               </Button>
               {/* <Button variant="outline" className="w-full">
