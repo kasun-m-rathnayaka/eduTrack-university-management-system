@@ -2,9 +2,9 @@ import { connect } from "@/lib/db";
 import User from "@/lib/models/users";
 import { NextRequest, NextResponse } from "next/server";
 const bcrypt = require("bcrypt");
-// import { jwt } from "jsonwebtoken";
+// import { Jwt } from "jsonwebtoken";
 
-const POST = async (request: NextRequest) => {
+export const POST = async (request: NextRequest) => {
   try {
     await connect().catch(console.dir);
     const reqBody = await request.json();
@@ -29,29 +29,30 @@ const POST = async (request: NextRequest) => {
     }
 
     return NextResponse.json(
-      { message: "user authentication successful" },
+      { user: user },
       { status: 200 }
     );
 
     // create token data
-    // const tokenData = {
-    //   id: user._id,
-    //   username: user.username,
-    //   email: user.email,
-    // };
-    // const token = await jwt.sign(tokenData, process.env.JWT_KEY);
 
-    // const response = NextResponse.json({
-    //   message: "Login successful",
-    //   success: true,
-    // });
+    //   const tokenData = {
+    //     id: user._id,
+    //     username: user.username,
+    //     email: user.email,
+    //   };
+    //   const token = await jwt.sign(tokenData, process.env.JWT_KEY);
 
-    // response.cookies.set("token", token, {
-    //   httpOnly: true,
-    // });
-    // return response;
+    //   const response = NextResponse.json({
+    //     message: "Login successful",
+    //     success: true,
+    //   });
 
-    // return NextResponse.json({ token });
+    //   response.cookies.set("token", token, {
+    //     httpOnly: true,
+    //   });
+    //   return response;
+
+    //   return NextResponse.json({ token });
   } catch (error: any) {
     return NextResponse.json({ error: error }, { status: 500 });
   }

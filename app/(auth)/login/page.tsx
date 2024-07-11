@@ -13,22 +13,24 @@ const LoginPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
-    name: "",
+    email: "",
     password: "",
   });
 
-  const handleSubmit = () =>{
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
     try {
-      setLoading(true)
-      const response = axios.post("/api/users/login", user);
+      setLoading(true);
+      const response = await axios.post("/api/users/login", user);
       toast.success("User Successfully Logged In ! ");
+      localStorage.setItem("user", JSON.stringify(response.data));
       router.push("/dashboard");
-    } catch (error) {
+    } catch (error: any) {
       console.log({ "sign in failed": error });
-    }finally{
-      setLoading(true)
+    } finally {
+      setLoading(true);
     }
-  }
+  };
 
   return (
     <>
@@ -37,7 +39,9 @@ const LoginPage = () => {
           <div className="mx-auto grid w-[350px] gap-6">
             <div className="flex flex-col justify-center items-center gap-2 text-center -mt-0 lg:-mt-20">
               <Image src={"/logo.png"} width={300} height={300} alt="logo" />
-              <h1 className="text-3xl font-bold">{loading? "Processing ..." : "Login"}</h1>
+              <h1 className="text-3xl font-bold">
+                {loading ? "Processing ..." : "Login"}
+              </h1>
               <p className="text-balance text-muted-foreground">
                 Enter your email below to login to your account
               </p>
@@ -50,7 +54,9 @@ const LoginPage = () => {
                     id="email"
                     type="email"
                     placeholder="m@example.com"
-                    onChange={(e) => setUser({ ...user, name: e.target.value })}
+                    onChange={(e) =>
+                      setUser({ ...user, email: e.target.value })
+                    }
                     required
                   />
                 </div>

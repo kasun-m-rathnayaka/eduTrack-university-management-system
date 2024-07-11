@@ -1,3 +1,4 @@
+'use client'
 import {
   Card,
   CardContent,
@@ -12,9 +13,12 @@ import SecondaryHeader from "@/components/SecondaryHeader";
 import { Tabs, TabsContent } from "@radix-ui/react-tabs";
 import TableComponent from "@/components/ui/TableComponent";
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from "@/context/AuthContext";
 
 const Dashboard = () => {
+  const user = useContext(AuthContext)
+  console.log(user)
   return (
     <>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
