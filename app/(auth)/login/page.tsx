@@ -6,9 +6,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const LoginPage = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     name: "",
     password: "",
@@ -16,9 +19,14 @@ const LoginPage = () => {
 
   const handleSubmit = () =>{
     try {
-      
+      setLoading(true)
+      const response = axios.post("/api/users/login", user);
+      toast.success("User Successfully Logged In ! ");
+      router.push("/dashboard");
     } catch (error) {
-      
+      console.log({ "sign in failed": error });
+    }finally{
+      setLoading(true)
     }
   }
 
@@ -29,7 +37,7 @@ const LoginPage = () => {
           <div className="mx-auto grid w-[350px] gap-6">
             <div className="flex flex-col justify-center items-center gap-2 text-center -mt-0 lg:-mt-20">
               <Image src={"/logo.png"} width={300} height={300} alt="logo" />
-              <h1 className="text-3xl font-bold">Login</h1>
+              <h1 className="text-3xl font-bold">{loading? "Processing ..." : "Login"}</h1>
               <p className="text-balance text-muted-foreground">
                 Enter your email below to login to your account
               </p>

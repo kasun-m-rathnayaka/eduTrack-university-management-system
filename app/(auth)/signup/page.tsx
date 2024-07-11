@@ -24,7 +24,7 @@ const SignUp = () => {
   const handleSubmit = () => {
     try {
       setLoading(true);
-      const response = axios.post("/api/users", user);
+      const response = axios.post("/api/users/signup", user);
       toast.success("User Successfully Created ! ");
       router.push("/login");
     } catch (error: any) {

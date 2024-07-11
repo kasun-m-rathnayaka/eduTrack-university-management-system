@@ -34,8 +34,8 @@ export const POST = async (request: NextRequest) => {
   try {
     const body = await request.json();
     await connect().catch(console.dir);
-    const { email, username, password } = body;
-    if (!email || !username || !password) {
+    const { email, name, password } = body;
+    if (!email || !name || !password) {
       return new NextResponse("invalid request", { status: 400 });
     }
 
@@ -50,7 +50,7 @@ export const POST = async (request: NextRequest) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({
-      username,
+      username: name,
       email,
       password: hashedPassword,
     });
