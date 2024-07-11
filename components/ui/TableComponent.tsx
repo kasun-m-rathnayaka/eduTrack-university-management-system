@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { MoreHorizontal } from "lucide-react";
+import { MoreHorizontal, UserCheck, UserCircleIcon } from "lucide-react";
 import Image from "next/image";
 
 const TableComponent = () => {
@@ -27,13 +27,7 @@ const TableComponent = () => {
         <TableBody>
           <TableRow>
             <TableCell className="hidden sm:table-cell">
-              <Image
-                alt="Product image"
-                className="aspect-square rounded-md object-cover"
-                height="64"
-                src="/placeholder.svg"
-                width="64"
-              />
+              <UserCircleIcon />
             </TableCell>
             <TableCell className="font-medium">
               Laser Lemonade Machine
