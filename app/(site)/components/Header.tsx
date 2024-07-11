@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import React from "react";
 
-const Header = ({ title, colored }: { title: string; colored: string }) => {
+const Header = ({ title, colored, desc }: { title: string; colored: string; desc:string }) => {
   return (
     <div>
       <header className={""}>
@@ -16,15 +17,14 @@ const Header = ({ title, colored }: { title: string; colored: string }) => {
             <p
               className={`mt-10 text-gray-500 text-center text-base lg:text-xl`}
             >
-              with seamless, integrated solutions for admissions, enrollment,
-              academic management, and more. Experience a new era of efficiency
-              and connectivity
+              {desc}
             </p>
           </div>
           <div
             className={`mt-10 flex justify-center items-center w-full mx-auto`}
           >
-            <Button variant="outline">Get Started</Button>
+            <Link href={'/signup'}><Button variant="outline">Get Started</Button></Link>
+            
             <span className={`mx-2`}>or</span>
             <Button>Contact us</Button>
           </div>

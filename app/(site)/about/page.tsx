@@ -8,7 +8,7 @@ const page = () => {
   return (
     <>
       <NavBar/>
-      <Header title={'Who We '} colored='Are'/>
+      <Header title={'Who We '} colored='Are' desc='EduTrack is a state-of-the-art university management system designed to revolutionize the administrative and academic operations of Veritas Heights University.'/>
       <CasesSection/>
       <Footer/>
     </>

@@ -20,7 +20,7 @@ const NavBar = () => {
             </a>
           </div>
           <div>
-            <ul className="flex gap-5 ">
+            <ul className="flex gap-5 lg:gap-10">
               <li className="hover:font-bold">
                 <Link href="/">Home</Link>
               </li>

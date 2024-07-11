@@ -10,7 +10,7 @@ const HomePage = () => {
   return (
     <div>
       <NavBar/>
-      <Header title="Empower our " colored="community"/>
+      <Header title="Empower our " colored="community" desc='with seamless, integrated solutions for admissions, enrollment, academic management, and more. Experience a new era of efficiency and connectivity'/>
       <main>
         <ListSection />
         <FeatureSection />
