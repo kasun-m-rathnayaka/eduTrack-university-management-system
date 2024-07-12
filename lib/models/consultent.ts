@@ -7,15 +7,11 @@ const consultentModel = new Schema(
         password: {type: "string", required: true},
         isverified: {type: "boolean", default: false},
         isAdmin: {type: "boolean", default: false},
-        fogotPasswordToken: {type: "string", default: null},
-        fogotPasswordExpire: {type: "Date", default: null},
-        verifyToken: {type: "string", default: null},
-        due:{type: "number", default: 0}
     },
     {
         timestamps: true
     }
 )
 
-const Consultent = models.Consultent || model("User", consultentModel)
+const Consultent = models.Consultent || model("Consultent", consultentModel)
 export default Consultent

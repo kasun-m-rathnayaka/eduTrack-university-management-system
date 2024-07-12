@@ -66,6 +66,25 @@ const TableComponent = ({
               </TableHead>
             </TableRow>
           )}
+          {consultentData && (
+            <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead className="md:table-cell">Name</TableHead>
+              <TableHead className="md:table-cell">Email</TableHead>
+              <TableHead className="hidden md:table-cell">Is Verified</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Is Admin
+              </TableHead>
+              <TableHead className="hidden md:table-cell">
+                Joined Date
+              </TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          )}
           {data && (
             <TableRow>
               <TableHead className="hidden w-[100px] sm:table-cell">
@@ -132,7 +151,7 @@ const TableComponent = ({
                 <TableCell className="font-medium">{item.username}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell className="hidden md:table-cell">
-                  <Badge variant="outline">{item.isverified}</Badge>
+                  <Badge variant="outline">{(item.isverified).toString()}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.due}
@@ -199,14 +218,14 @@ const TableComponent = ({
                   <UserCircleIcon />
                 </TableCell>
                 <TableCell className="font-medium">{item.username}</TableCell>
-                <TableCell>
-                  <Badge variant="outline">Draft</Badge>
-                </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.email}
                 </TableCell>
+                <TableCell>
+                  <Badge variant="outline">{(item.isverified).toString()}</Badge>
+                </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.due}
+                  {(item.isAdmin).toString()}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Moment date={item.createdAt} />

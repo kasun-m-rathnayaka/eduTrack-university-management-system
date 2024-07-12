@@ -1,12 +1,11 @@
 import { connect } from "@/lib/db";
-import AssignedConsultent from "@/lib/models/assignedConsultent";
-import User from "@/lib/models/users";
+import Councel from "@/lib/models/assignedConsultent";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
   try {
     await connect().catch(console.dir);
-    const assignedConsultent = await AssignedConsultent.find({
+    const assignedConsultent = await Councel.find({
       stu: "6691145b3dba9effe2c19ea4",
     });
     return new NextResponse(JSON.stringify(assignedConsultent), {

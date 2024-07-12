@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const activeModulesModel = new Schema(
+const activeCouncelModel = new Schema(
   {
     stu: { type: "string", required: true, unique: false },
     consultentList: [
@@ -17,6 +17,5 @@ const activeModulesModel = new Schema(
   }
 );
 
-const AssignedConsultent =
-  models.AssignedConsultent || model("assignedconsultent", activeModulesModel);
-export default AssignedConsultent;
+const Councel = models.Councel || model("Councel", activeCouncelModel);
+export default Councel;
