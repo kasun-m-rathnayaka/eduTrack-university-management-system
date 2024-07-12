@@ -14,7 +14,7 @@ const ContactConsultents = () => {
   const [modules, setModules] = useState([]); 
   const featchData = async () => {
     try {
-      const res = await fetch("/api/modules", {
+      const res = await fetch("/api/consultent", {
         next: { tags: ["modules"] },
       });
       const data = await res.json();

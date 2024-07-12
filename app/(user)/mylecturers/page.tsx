@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -9,10 +9,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
+import { AuthContext } from "@/context/AuthContext";
 
 const Lectures = () => {
   const [consultent, setConsultent] = useState([]); 
-  const featchData = async () => {
+   const featchData = async () => {
     try {
       const res = await fetch("/api/lecturers", {
         next: { tags: ["lecturers"] },
@@ -23,7 +24,6 @@ const Lectures = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     featchData();
   }, []);
@@ -34,7 +34,7 @@ const Lectures = () => {
         <CardHeader>
           <CardTitle>Lecturers</CardTitle>
           <CardDescription>
-            Manage Lectures and analyze their performance.
+            Assigned Lectures for each modules.
           </CardDescription>
         </CardHeader>
         <CardContent>

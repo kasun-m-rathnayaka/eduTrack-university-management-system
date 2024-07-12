@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -9,16 +9,19 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
+import { AuthContext } from "@/context/AuthContext";
 
 const ActiveModules = () => {
   const [modules, setModules] = useState([]); 
+  const user = useContext(AuthContext);
+  console.log(user.user._id)
   const featchData = async () => {
     try {
       const res = await fetch("/api/activemodules", {
         next: { tags: ["modules"] },
       });
       const data = await res.json();
-      setModules(data);
+      setModules(data[0].modulesList);
     } catch (error: any) {
       console.log(error);
     }
@@ -27,7 +30,7 @@ const ActiveModules = () => {
   useEffect(() => {
     featchData();
   }, []);
-  
+  console.log(modules)
   return (
     <div>
       <Card x-chunk="dashboard-06-chunk-0">

@@ -73,12 +73,30 @@ const TableComponent = ({
               </TableHead>
               <TableHead className="md:table-cell">Name</TableHead>
               <TableHead className="md:table-cell">Email</TableHead>
-              <TableHead className="hidden md:table-cell">Is Verified</TableHead>
               <TableHead className="hidden md:table-cell">
-                Due Fees
+                Is Verified
               </TableHead>
+              <TableHead className="hidden md:table-cell">Due Fees</TableHead>
               <TableHead className="hidden md:table-cell">
                 Joined Date
+              </TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          )}
+          {activeModules && (
+            <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead className="md:table-cell">Module</TableHead>
+              <TableHead className="md:table-cell">Status</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Grade
+              </TableHead>
+              <TableHead className="hidden md:table-cell">
+                Date
               </TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
@@ -93,9 +111,7 @@ const TableComponent = ({
               <TableHead className="md:table-cell">Code</TableHead>
               <TableHead className="md:table-cell">Subject Name</TableHead>
               <TableHead className="hidden md:table-cell">Status</TableHead>
-              <TableHead className="hidden md:table-cell">
-                Department
-              </TableHead>
+              <TableHead className="hidden md:table-cell">Department</TableHead>
               <TableHead className="hidden md:table-cell">
                 Modified Date
               </TableHead>
@@ -114,11 +130,9 @@ const TableComponent = ({
                   <UserCircleIcon />
                 </TableCell>
                 <TableCell className="font-medium">{item.username}</TableCell>
-                <TableCell>
-                  {item.email}
-                </TableCell>
+                <TableCell>{item.email}</TableCell>
                 <TableCell className="hidden md:table-cell">
-                <Badge variant="outline">{item.isverified}</Badge>
+                  <Badge variant="outline">{item.isverified}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.due}
@@ -223,7 +237,7 @@ const TableComponent = ({
                 <TableCell className="font-medium">{item.username}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell className="hidden md:table-cell">
-                  <Badge variant="outline">{item.isAdmin}</Badge>
+                  <Badge variant="outline">{(item.isAdmin).toString()}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.majorsub}
@@ -290,15 +304,12 @@ const TableComponent = ({
                 <TableCell className="hidden sm:table-cell">
                   <UserCircleIcon />
                 </TableCell>
-                <TableCell className="font-medium">{item.username}</TableCell>
+                <TableCell className="font-medium">{item.module}</TableCell>
                 <TableCell>
-                  <Badge variant="outline">Draft</Badge>
+                  {item.status}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.email}
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  {item.due}
+                <Badge variant="outline">{item.grade}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Moment date={item.createdAt} />
