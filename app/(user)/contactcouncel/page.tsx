@@ -15,10 +15,10 @@ const ContactConsultents = () => {
   const featchData = async () => {
     try {
       const res = await fetch("/api/consultent", {
-        next: { tags: ["modules"] },
+        next: { tags: ["councel"] },
       });
       const data = await res.json();
-      setModules(data);
+      setModules(data[0].consultentList);
     } catch (error: any) {
       console.log(error);
     }

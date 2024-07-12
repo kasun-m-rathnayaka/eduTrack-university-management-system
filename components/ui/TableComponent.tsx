@@ -139,6 +139,23 @@ const TableComponent = ({
               </TableHead>
             </TableRow>
           )}
+          {consultent && (
+            <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead className="md:table-cell">Name</TableHead>
+              <TableHead className="md:table-cell">Status</TableHead>
+              <TableHead className="hidden md:table-cell">Email</TableHead>
+              <TableHead className="hidden md:table-cell">Phone Num</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Modified Date
+              </TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          )}
         </TableHeader>
         <TableBody>
           {/* map student data */}
@@ -356,18 +373,18 @@ const TableComponent = ({
                 <TableCell className="hidden sm:table-cell">
                   <UserCircleIcon />
                 </TableCell>
-                <TableCell className="font-medium">{item.username}</TableCell>
+                <TableCell className="font-medium">{item.consultent}</TableCell>
                 <TableCell>
-                  <Badge variant="outline">Draft</Badge>
+                  <Badge variant="outline">{item.status}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.email}
+                  <a href={`tel:${item.phnumber}`}>{item.phnumber}</a>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.due}
+                <a href={`mailto:${item.email}`}>{item.email}</a>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  <Moment date={item.createdAt} />
+                  <Moment date={item.modifiedAtAt} />
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>
