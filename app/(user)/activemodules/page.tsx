@@ -9,12 +9,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
-import { AuthContext } from "@/context/AuthContext";
 
 const ActiveModules = () => {
   const [modules, setModules] = useState([]); 
-  const user = useContext(AuthContext);
-  // console.log(user.user._id)
   const featchData = async () => {
     try {
       const res = await fetch("/api/activemodules", {

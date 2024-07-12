@@ -9,7 +9,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
-import { AuthContext } from "@/context/AuthContext";
 
 const Lectures = () => {
   const [consultent, setConsultent] = useState([]); 
