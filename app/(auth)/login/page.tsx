@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginPage = () => {
   const router = useRouter();
@@ -23,8 +23,13 @@ const LoginPage = () => {
       setLoading(true);
       const response = await axios.post("/api/users/login", user);
       toast.success("User Successfully Logged In ! ");
-      localStorage.setItem("user", JSON.stringify(response.data));
-      router.push("/students");
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      console.log(response.data.user.isAdmin)
+      if (response.data.user.isAdmin == true) {
+        router.push("/students");
+      } else {
+        router.push("/activemodules");
+      }
     } catch (error: any) {
       console.log({ "sign in failed": error });
     } finally {
@@ -35,6 +40,7 @@ const LoginPage = () => {
   return (
     <>
       <div className="w-full h-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+        <Toaster />
         <div className="flex items-center justify-center">
           <div className="mx-auto grid w-[350px] gap-6">
             <div className="flex flex-col justify-center items-center gap-2 text-center -mt-0 lg:-mt-20">

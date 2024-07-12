@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -10,6 +11,23 @@ import {
 import TableComponent from "@/components/ui/TableComponent";
 
 const ActiveModules = () => {
+  const [modules, setModules] = useState([]); 
+  const featchData = async () => {
+    try {
+      const res = await fetch("/api/activemodules", {
+        next: { tags: ["modules"] },
+      });
+      const data = await res.json();
+      setModules(data);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    featchData();
+  }, []);
+  
   return (
     <div>
       <Card x-chunk="dashboard-06-chunk-0">
@@ -20,7 +38,7 @@ const ActiveModules = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <TableComponent />
+          <TableComponent activeModules={modules} />
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">

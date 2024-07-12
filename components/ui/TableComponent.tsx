@@ -24,12 +24,16 @@ const TableComponent = ({
   consultentData,
   lectuerData,
   requestsData,
+  activeModules,
+  consultent
 }: {
   data?: any;
   moduleData?: any;
   consultentData?: any;
   lectuerData?: any;
   requestsData?: any;
+  activeModules?:any;
+  consultent?:any;
 }) => {
   return (
     <>
@@ -198,6 +202,78 @@ const TableComponent = ({
             ))}
           {requestsData &&
             requestsData.map((item: any, index: number) => (
+              <TableRow key={index}>
+                <TableCell className="hidden sm:table-cell">
+                  <UserCircleIcon />
+                </TableCell>
+                <TableCell className="font-medium">{item.username}</TableCell>
+                <TableCell>
+                  <Badge variant="outline">Draft</Badge>
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {item.email}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {item.due}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  <Moment date={item.createdAt} />
+                </TableCell>
+                <TableCell>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button aria-haspopup="true" size="icon" variant="ghost">
+                        <MoreHorizontal className="h-4 w-4" />
+                        <span className="sr-only">Toggle menu</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            ))}
+          {activeModules &&
+            activeModules.map((item: any, index: number) => (
+              <TableRow key={index}>
+                <TableCell className="hidden sm:table-cell">
+                  <UserCircleIcon />
+                </TableCell>
+                <TableCell className="font-medium">{item.username}</TableCell>
+                <TableCell>
+                  <Badge variant="outline">Draft</Badge>
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {item.email}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  {item.due}
+                </TableCell>
+                <TableCell className="hidden md:table-cell">
+                  <Moment date={item.createdAt} />
+                </TableCell>
+                <TableCell>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button aria-haspopup="true" size="icon" variant="ghost">
+                        <MoreHorizontal className="h-4 w-4" />
+                        <span className="sr-only">Toggle menu</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                      <DropdownMenuItem>Edit</DropdownMenuItem>
+                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </TableCell>
+              </TableRow>
+            ))}
+          {consultent &&
+            consultent.map((item: any, index: number) => (
               <TableRow key={index}>
                 <TableCell className="hidden sm:table-cell">
                   <UserCircleIcon />

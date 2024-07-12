@@ -11,6 +11,7 @@ import {
   import SecondaryHeader from "@/components/SecondaryHeader";
   import { Tabs, TabsContent } from "@radix-ui/react-tabs";
   import TableComponent from "@/components/ui/TableComponent";
+import UserSideBar from "@/components/UserSideBar";
 
 export default function DashboardLayout({
   children, // will be a page or nested layout
@@ -20,11 +21,12 @@ export default function DashboardLayout({
   return (
     <section>
       <div className="flex min-h-screen w-full flex-col bg-muted/40">
-        <SideBar />
+        <UserSideBar />
         <div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
-          <Header title={"Dashboard"} />
+          <Header title={"Welcome Student"} />
           <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
             <Tabs defaultValue="all">
+            <SecondaryHeader/>
               {children}
             </Tabs>
           </main>

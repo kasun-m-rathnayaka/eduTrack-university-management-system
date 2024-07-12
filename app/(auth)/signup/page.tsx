@@ -37,6 +37,7 @@ const SignUp = () => {
   return (
     <>
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
+        <Toaster/>
         <div className="hidden bg-muted lg:block">
           <Image
             src="/img/signup.png"

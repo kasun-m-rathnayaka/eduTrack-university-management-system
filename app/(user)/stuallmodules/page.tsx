@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
 
-const ContactConsultents = () => {
+const AllModules = () => {
   const [modules, setModules] = useState([]); 
   const featchData = async () => {
     try {
@@ -32,11 +32,13 @@ const ContactConsultents = () => {
     <div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Contact Consultents</CardTitle>
-          <CardDescription>Manage Contact Consultents.</CardDescription>
+          <CardTitle>All Moduless</CardTitle>
+          <CardDescription>
+            Manage AllModules and analyze their performance.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <TableComponent consultent={modules} />
+          <TableComponent moduleData={modules}/>
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">
@@ -48,4 +50,4 @@ const ContactConsultents = () => {
   );
 };
 
-export default ContactConsultents;
+export default AllModules;

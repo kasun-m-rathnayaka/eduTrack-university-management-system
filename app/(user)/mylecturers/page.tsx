@@ -10,15 +10,15 @@ import {
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
 
-const ContactConsultents = () => {
-  const [modules, setModules] = useState([]); 
+const Lectures = () => {
+  const [consultent, setConsultent] = useState([]); 
   const featchData = async () => {
     try {
-      const res = await fetch("/api/modules", {
-        next: { tags: ["modules"] },
+      const res = await fetch("/api/lecturers", {
+        next: { tags: ["lecturers"] },
       });
       const data = await res.json();
-      setModules(data);
+      setConsultent(data);
     } catch (error: any) {
       console.log(error);
     }
@@ -32,11 +32,13 @@ const ContactConsultents = () => {
     <div>
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
-          <CardTitle>Contact Consultents</CardTitle>
-          <CardDescription>Manage Contact Consultents.</CardDescription>
+          <CardTitle>Lecturers</CardTitle>
+          <CardDescription>
+            Manage Lectures and analyze their performance.
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <TableComponent consultent={modules} />
+          <TableComponent lectuerData={consultent} />
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">
@@ -48,4 +50,4 @@ const ContactConsultents = () => {
   );
 };
 
-export default ContactConsultents;
+export default Lectures;
