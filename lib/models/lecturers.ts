@@ -6,16 +6,14 @@ const lectureModel = new Schema(
         username: {type: "string", required: true, unique: true},
         password: {type: "string", required: true},
         isverified: {type: "boolean", default: false},
-        isAdmin: {type: "boolean", default: false},
-        fogotPasswordToken: {type: "string", default: null},
-        fogotPasswordExpire: {type: "Date", default: null},
-        verifyToken: {type: "string", default: null},
-        due:{type: "number", default: 0}
+        isAdmin: {type: "boolean", default: true},
+        majorsub:{type: "string", required: true},
+        joineddate:{type: "date", required: true},
     },
     {
         timestamps: true
     }
 )
 
-const Lecturer = models.Lecturer || model("User", lectureModel)
+const Lecturer = models.Lecturer || model("Lecturer", lectureModel)
 export default Lecturer

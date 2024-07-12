@@ -32,9 +32,10 @@ const Footer = () => {
   return (
     <footer className={`bg-white border-t border-gray-400 pt-14`}>
       <div
-        className={`max-w-7xl mx-auto text-gray-400 px-8 lg:px-0 flex flex-wrap justify-center items-center  pb-20`}
+        className={`max-w-7xl mx-auto text-gray-400 px-8 lg:px-0 flex flex-wrap justify-items-start items-center  pb-20`}
       >
-        <div className={`flex items-center w-1/2`}>
+        <div className={`flex flex-col items-start w-1/2`}>
+        <div className="flex ">
           <img
             className={`h-12 w-12`}
             src="/icon.png"
@@ -44,7 +45,9 @@ const Footer = () => {
           />
           <p className={`text-4xl text-primary-text font-bold`}>EduTrack</p>
         </div>
-        <div className={`w-full lg:w-1/2 mt-12 lg:mt-0`}>
+          <p className="text-sm m-2 max-w-[500px]">The EduTrack University Management System will transform the operational efficiency of Veritas Heights University by leveraging modern technology to integrate and streamline key university functions. This proposal outlines a detailed plan for the development and implementation of EduTrack, ensuring a successful transition to a more efficient and connected academic environment.</p>
+        </div>
+        <div className={`w-full lg:w-1/2 lg:mt-0`}>
           <div className={`border border-gray-400 rounded-xl py-5 px-4`}>
             <h4 className={`font-mono text-sm uppercase mb-3`}>
               Subscribe our newsletter

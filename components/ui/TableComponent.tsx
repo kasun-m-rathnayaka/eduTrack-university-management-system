@@ -18,6 +18,14 @@ import {
 import { MoreHorizontal, UserCheck, UserCircleIcon } from "lucide-react";
 import Moment from "react-moment";
 
+const defaultHeadings = [
+  "Code",
+  "Subject Name",
+  "Status",
+  "Department",
+  "Modified At",
+];
+
 const TableComponent = ({
   data,
   moduleData,
@@ -25,33 +33,77 @@ const TableComponent = ({
   lectuerData,
   requestsData,
   activeModules,
-  consultent
+  consultent,
 }: {
   data?: any;
   moduleData?: any;
   consultentData?: any;
   lectuerData?: any;
   requestsData?: any;
-  activeModules?:any;
-  consultent?:any;
+  activeModules?: any;
+  consultent?: any;
 }) => {
   return (
     <>
       <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead className="hidden w-[100px] sm:table-cell">
-              <span className="sr-only">Image</span>
-            </TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="hidden md:table-cell">email</TableHead>
-            <TableHead className="hidden md:table-cell">Deu Payment</TableHead>
-            <TableHead className="hidden md:table-cell">Created at</TableHead>
-            <TableHead>
-              <span className="sr-only">Actions</span>
-            </TableHead>
-          </TableRow>
+          {lectuerData && (
+            <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead className="md:table-cell">Name</TableHead>
+              <TableHead className="md:table-cell">Email</TableHead>
+              <TableHead className="hidden md:table-cell">Is Admin</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Major Subject
+              </TableHead>
+              <TableHead className="hidden md:table-cell">
+                Joined Date
+              </TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          )}
+          {data && (
+            <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead className="md:table-cell">Name</TableHead>
+              <TableHead className="md:table-cell">Email</TableHead>
+              <TableHead className="hidden md:table-cell">Is Verified</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Due Fees
+              </TableHead>
+              <TableHead className="hidden md:table-cell">
+                Joined Date
+              </TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          )}
+          {moduleData && (
+            <TableRow>
+              <TableHead className="hidden w-[100px] sm:table-cell">
+                <span className="sr-only">Image</span>
+              </TableHead>
+              <TableHead className="md:table-cell">Code</TableHead>
+              <TableHead className="md:table-cell">Subject Name</TableHead>
+              <TableHead className="hidden md:table-cell">Status</TableHead>
+              <TableHead className="hidden md:table-cell">
+                Department
+              </TableHead>
+              <TableHead className="hidden md:table-cell">
+                Modified Date
+              </TableHead>
+              <TableHead>
+                <span className="sr-only">Actions</span>
+              </TableHead>
+            </TableRow>
+          )}
         </TableHeader>
         <TableBody>
           {/* map student data */}
@@ -63,10 +115,10 @@ const TableComponent = ({
                 </TableCell>
                 <TableCell className="font-medium">{item.username}</TableCell>
                 <TableCell>
-                  <Badge variant="outline">Draft</Badge>
+                  {item.email}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.email}
+                <Badge variant="outline">{item.isverified}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.due}
@@ -98,18 +150,16 @@ const TableComponent = ({
                 <TableCell className="hidden sm:table-cell">
                   <UserCircleIcon />
                 </TableCell>
-                <TableCell className="font-medium">{item.username}</TableCell>
-                <TableCell>
-                  <Badge variant="outline">Draft</Badge>
+                <TableCell className="font-medium">{item.code}</TableCell>
+                <TableCell>{item.name}</TableCell>
+                <TableCell className="hidden md:table-cell">
+                  <Badge variant="outline">{item.status}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.email}
+                  {item.department}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.due}
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  <Moment date={item.createdAt} />
+                  <Moment date={item.modifiedAt} />
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>
@@ -171,14 +221,12 @@ const TableComponent = ({
                   <UserCircleIcon />
                 </TableCell>
                 <TableCell className="font-medium">{item.username}</TableCell>
-                <TableCell>
-                  <Badge variant="outline">Draft</Badge>
+                <TableCell>{item.email}</TableCell>
+                <TableCell className="hidden md:table-cell">
+                  <Badge variant="outline">{item.isAdmin}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {item.email}
-                </TableCell>
-                <TableCell className="hidden md:table-cell">
-                  {item.due}
+                  {item.majorsub}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Moment date={item.createdAt} />

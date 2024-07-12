@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import {
   Card,
@@ -11,7 +11,7 @@ import {
 import TableComponent from "@/components/ui/TableComponent";
 
 const Lectures = () => {
-  const [consultent, setConsultent] = useState([]); 
+  const [consultent, setConsultent] = useState([]);
   const featchData = async () => {
     try {
       const res = await fetch("/api/lecturers", {
@@ -38,7 +38,7 @@ const Lectures = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <TableComponent lectuerData={consultent} />
+          <TableComponent lectuerData={consultent}/>
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">
