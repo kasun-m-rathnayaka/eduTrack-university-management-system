@@ -34,18 +34,6 @@ const SignUp = () => {
     }
   };
 
-  useEffect(() => {
-    if (
-      user.password.length > 0 ||
-      user.name.length > 0 ||
-      user.email.length > 0 ||
-      user.stuid.length > 0
-    ) {
-      setButtonDisabled(false);
-    } else {
-      setButtonDisabled(true);
-    }
-  }, []);
   return (
     <>
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">

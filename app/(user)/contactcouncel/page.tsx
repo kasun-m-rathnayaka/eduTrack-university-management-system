@@ -15,9 +15,7 @@ const ContactConsultents = () => {
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           <CardTitle>Contact Consultents</CardTitle>
-          <CardDescription>
-            Manage Contact Consultents.
-          </CardDescription>
+          <CardDescription>Manage Contact Consultents.</CardDescription>
         </CardHeader>
         <CardContent>
           <TableComponent />

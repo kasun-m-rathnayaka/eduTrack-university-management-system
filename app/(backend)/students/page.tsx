@@ -1,8 +1,32 @@
-import React from "react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
+import React, { useEffect, useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
 
 const Students = () => {
+  const [students, setStudents] = useState([]); // [students, setStudents
+  const featchData = async () => {
+    try {
+      const res = await fetch("/api/students", {
+        next: { tags: ["students"] },
+      });
+      const data = await res.json();
+      setStudents(data);
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    featchData();
+  }, []);
   return (
     <div>
       <Card x-chunk="dashboard-06-chunk-0">
@@ -13,7 +37,7 @@ const Students = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <TableComponent />
+          <TableComponent data={students} />
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">

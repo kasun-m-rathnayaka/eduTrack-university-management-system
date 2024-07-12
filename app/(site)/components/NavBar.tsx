@@ -9,7 +9,7 @@ const NavBar = () => {
       <nav>
         <div className="flex sticky justify-between my-4 items-center mx-5 md:mx-20">
           <div>
-            <a href="/">
+            <a href="/home">
               <Image
                 src="/logo.png"
                 alt="logo"
@@ -22,7 +22,7 @@ const NavBar = () => {
           <div>
             <ul className="flex gap-5 lg:gap-10">
               <li className="hover:font-bold">
-                <Link href="/">Home</Link>
+                <Link href="/home">Home</Link>
               </li>
               <li className="hover:font-bold">
                 <Link href="/about">About</Link>

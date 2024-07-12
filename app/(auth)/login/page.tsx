@@ -24,7 +24,7 @@ const LoginPage = () => {
       const response = await axios.post("/api/users/login", user);
       toast.success("User Successfully Logged In ! ");
       localStorage.setItem("user", JSON.stringify(response.data));
-      router.push("/dashboard");
+      router.push("/students");
     } catch (error: any) {
       console.log({ "sign in failed": error });
     } finally {
