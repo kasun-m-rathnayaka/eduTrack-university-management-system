@@ -12,5 +12,5 @@ const moduleModel = new Schema(
     }
 )
 
-const Module = models.Module || model("Module", moduleModel)
-export default Module
+const Modules = models.Modules || model("Modules", moduleModel)
+export default Modules
