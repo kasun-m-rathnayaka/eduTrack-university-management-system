@@ -32,6 +32,7 @@ const LoginPage = () => {
       }
     } catch (error: any) {
       console.log({ "sign in failed": error });
+      toast.error("User Login Failed ! ");
     } finally {
       setLoading(true);
     }

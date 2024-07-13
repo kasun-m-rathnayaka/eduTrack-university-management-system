@@ -29,6 +29,7 @@ const SignUp = () => {
       router.push("/login");
     } catch (error: any) {
       console.log({ "sign up failed": error });
+      toast.error("User Creation Failed ! ");
     } finally {
       setLoading(true);
     }
