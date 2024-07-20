@@ -6,23 +6,27 @@ import { Button } from "./ui/button";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const InputUi = ({ setOpen }: { setOpen: any }) => {
+const InputUi = ({ setOpen,handleUserInsert }: { setOpen: any; handleUserInsert:any }) => {
   const [user, setUser] = useState({
     email: "",
     password: "",
     username: "",
   });
 
-  const handleUserInsert = async() => {
-    try {
-      const response = await axios.post("/api/students", user);
-      toast.success("User Successfully Created ! ");
-      setOpen(false);
-    } catch (error: any) {
-      console.log({ "sign up failed": error });
-      toast.error("User Creation Failed ! ");
-    }
-  };
+  // const handleUserInsert = async() => {
+  //   try {
+  //     const response = await axios.post("/api/students", user);
+  //     toast.success("User Successfully Created ! ");
+  //     setOpen(false);
+  //   } catch (error: any) {
+  //     console.log({ "sign up failed": error });
+  //     toast.error("User Creation Failed ! ");
+  //   }
+  // };
+
+  const handleClick = ()=>{
+    handleUserInsert(user)
+  }
 
   return (
     <div className=" absolute top-0 left-0 w-full h-screen bg-[#ffffff92] z-50">
@@ -41,7 +45,7 @@ const InputUi = ({ setOpen }: { setOpen: any }) => {
                 id="name"
                 type="text"
                 placeholder="Jhone Doe"
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                onChange={(e) => setUser({ ...user, username: e.target.value })}
                 required
               />
             </div>
@@ -68,9 +72,9 @@ const InputUi = ({ setOpen }: { setOpen: any }) => {
               />
             </div>
             <Button
-              type="submit"
+              type="button"
               className="w-full"
-              onClick={handleUserInsert}
+              onClick={handleClick}
             >
               Submit
             </Button>

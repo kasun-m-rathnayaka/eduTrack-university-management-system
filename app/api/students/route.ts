@@ -53,24 +53,3 @@ export const POST = async (request: Request) => {
     });
   }
 };
-
-export const DELETE = async(request:Request) =>{
-  try {
-    const body = await request.json();
-    const { _id } = body;
-    await connect().catch(console.dir);
-
-    const deletedUser = await User.findByIdAndDelete(_id);
-
-    if (!deletedUser) {
-      return new NextResponse("User not found", { status: 404 });
-    }
-
-    return new NextResponse(
-      JSON.stringify({ message: "User deleted successfully", user: deletedUser }),
-      { status: 200 }
-    );
-  } catch (error) {
-    return new NextResponse("Error deleting user: " + error, { status: 500 });
-  }
-}
