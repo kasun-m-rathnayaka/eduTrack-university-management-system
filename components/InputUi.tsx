@@ -3,8 +3,6 @@ import { Label } from "@radix-ui/react-label";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "./ui/button";
-import axios from "axios";
-import toast from "react-hot-toast";
 
 const InputUi = ({ setOpen,handleUserInsert }: { setOpen: any; handleUserInsert:any }) => {
   const [user, setUser] = useState({

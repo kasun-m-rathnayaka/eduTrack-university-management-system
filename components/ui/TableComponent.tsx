@@ -34,7 +34,7 @@ const TableComponent = ({
   requestsData,
   activeModules,
   consultent,
-  handleDelete
+  handleDelete,
 }: {
   data?: any;
   moduleData?: any;
@@ -43,12 +43,11 @@ const TableComponent = ({
   requestsData?: any;
   activeModules?: any;
   consultent?: any;
-  handleDelete?:any;
+  handleDelete?: any;
 }) => {
-
-  const handleClick = (item:any) =>{
-    handleDelete(item)
-  }
+  const handleClick = (item: any) => {
+    handleDelete(item);
+  };
   return (
     <>
       <Table>
@@ -79,10 +78,10 @@ const TableComponent = ({
               </TableHead>
               <TableHead className="md:table-cell">Name</TableHead>
               <TableHead className="md:table-cell">Email</TableHead>
-              <TableHead className="hidden md:table-cell">Is Verified</TableHead>
               <TableHead className="hidden md:table-cell">
-                Is Admin
+                Is Verified
               </TableHead>
+              <TableHead className="hidden md:table-cell">Is Admin</TableHead>
               <TableHead className="hidden md:table-cell">
                 Joined Date
               </TableHead>
@@ -117,12 +116,8 @@ const TableComponent = ({
               </TableHead>
               <TableHead className="md:table-cell">Module</TableHead>
               <TableHead className="md:table-cell">Status</TableHead>
-              <TableHead className="hidden md:table-cell">
-                Grade
-              </TableHead>
-              <TableHead className="hidden md:table-cell">
-                Date
-              </TableHead>
+              <TableHead className="hidden md:table-cell">Grade</TableHead>
+              <TableHead className="hidden md:table-cell">Date</TableHead>
               <TableHead>
                 <span className="sr-only">Actions</span>
               </TableHead>
@@ -174,7 +169,7 @@ const TableComponent = ({
                 <TableCell className="font-medium">{item.username}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell className="hidden md:table-cell">
-                  <Badge variant="outline">{(item.isverified).toString()}</Badge>
+                  <Badge variant="outline">{item.isverified.toString()}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.due}
@@ -193,8 +188,9 @@ const TableComponent = ({
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem onClick={(e) =>
-                handleClick(item)}>Delete</DropdownMenuItem>
+                      <DropdownMenuItem onClick={(e) => handleClick(item)}>
+                        Delete
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
@@ -229,7 +225,9 @@ const TableComponent = ({
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                      <DropdownMenuItem onClick={(e) => handleClick(item)}>
+                        Delete
+                      </DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>
@@ -246,10 +244,10 @@ const TableComponent = ({
                   {item.email}
                 </TableCell>
                 <TableCell>
-                  <Badge variant="outline">{(item.isverified).toString()}</Badge>
+                  <Badge variant="outline">{item.isverified.toString()}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                  {(item.isAdmin).toString()}
+                  {item.isAdmin.toString()}
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Moment date={item.createdAt} />
@@ -280,7 +278,7 @@ const TableComponent = ({
                 <TableCell className="font-medium">{item.username}</TableCell>
                 <TableCell>{item.email}</TableCell>
                 <TableCell className="hidden md:table-cell">
-                  <Badge variant="outline">{(item.isAdmin).toString()}</Badge>
+                  <Badge variant="outline">{item.isAdmin.toString()}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   {item.majorsub}
@@ -348,11 +346,9 @@ const TableComponent = ({
                   <UserCircleIcon />
                 </TableCell>
                 <TableCell className="font-medium">{item.module}</TableCell>
-                <TableCell>
-                  {item.status}
-                </TableCell>
+                <TableCell>{item.status}</TableCell>
                 <TableCell className="hidden md:table-cell">
-                <Badge variant="outline">{item.grade}</Badge>
+                  <Badge variant="outline">{item.grade}</Badge>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Moment date={item.createdAt} />
@@ -388,7 +384,7 @@ const TableComponent = ({
                   <a href={`tel:${item.phnumber}`}>{item.phnumber}</a>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
-                <a href={`mailto:${item.email}`}>{item.email}</a>
+                  <a href={`mailto:${item.email}`}>{item.email}</a>
                 </TableCell>
                 <TableCell className="hidden md:table-cell">
                   <Moment date={item.modifiedAtAt} />

@@ -38,7 +38,7 @@ const Students = () => {
   };
 
   const handleUserInsert = async (user: any) => {
-    console.log(user)
+    console.log(user);
     try {
       const response = await axios.post("/api/students", user);
       toast.success("User Successfully Created ! ");
@@ -61,9 +61,11 @@ const Students = () => {
 
   return (
     <div>
-      {open && <InputUi setOpen={setOpen} handleUserInsert={handleUserInsert} />}
-      <Toaster/>
-      <SecondaryHeader callHandleSubmit={callHandleSubmit}  />
+      {open && (
+        <InputUi setOpen={setOpen} handleUserInsert={handleUserInsert} />
+      )}
+      <Toaster />
+      <SecondaryHeader callHandleSubmit={callHandleSubmit} />
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           <CardTitle>Students</CardTitle>
