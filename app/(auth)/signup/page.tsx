@@ -21,7 +21,7 @@ const SignUp = () => {
   const [buttonDisabled, setButtonDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async() => {
+  const handleSubmit = async () => {
     try {
       setLoading(true);
       const response = await axios.post("/api/users/signup", user);
@@ -38,7 +38,7 @@ const SignUp = () => {
   return (
     <>
       <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 xl:min-h-[800px]">
-        <Toaster/>
+        <Toaster />
         <div className="hidden bg-muted lg:block">
           <Image
             src="/img/signup.png"
@@ -98,7 +98,7 @@ const SignUp = () => {
                   type="stuId"
                   placeholder="SD000001"
                   onChange={(e) => setUser({ ...user, stuid: e.target.value })}
-                  onClick={(e)=> setButtonDisabled(false)}
+                  onClick={(e) => setButtonDisabled(false)}
                   required
                 />
               </div>

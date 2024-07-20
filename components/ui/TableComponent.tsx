@@ -34,6 +34,7 @@ const TableComponent = ({
   requestsData,
   activeModules,
   consultent,
+  handleDelete
 }: {
   data?: any;
   moduleData?: any;
@@ -42,7 +43,12 @@ const TableComponent = ({
   requestsData?: any;
   activeModules?: any;
   consultent?: any;
+  handleDelete?:any;
 }) => {
+
+  const handleClick = (item:any) =>{
+    handleDelete(item)
+  }
   return (
     <>
       <Table>
@@ -187,7 +193,8 @@ const TableComponent = ({
                     <DropdownMenuContent align="end">
                       <DropdownMenuLabel>Actions</DropdownMenuLabel>
                       <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Delete</DropdownMenuItem>
+                      <DropdownMenuItem onClick={(e) =>
+                handleClick(item)}>Delete</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </TableCell>

@@ -9,9 +9,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import TableComponent from "@/components/ui/TableComponent";
+import SecondaryHeader from "@/components/SecondaryHeader";
+import InputUi from "@/components/InputUi";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Students = () => {
   const [students, setStudents] = useState([]); // [students, setStudents
+  const [open, setOpen] = useState(false);
   const featchData = async () => {
     try {
       const res = await fetch("/api/students", {
@@ -27,8 +32,39 @@ const Students = () => {
   useEffect(() => {
     featchData();
   }, []);
+
+  const callHandleSubmit = () => {
+    setOpen(true);
+  };
+
+  const handleUserInsert = async (user: any) => {
+    try {
+      const response = await axios.post("/api/students", user);
+      toast.success("User Successfully Created ! ");
+      setOpen(false);
+    } catch (error: any) {
+      console.log({ "sign up failed": error });
+      toast.error("User Creation Failed ! ");
+    }
+  };
+
+
+  const handleDelete = async(item:any)=>{
+       try {
+        await axios.delete(`/api/students`,item);
+        toast.success("Student Successfully Deleted!");
+      } catch (error: any) {
+        console.log({ "delete failed": error });
+        toast.error("Student Deletion Failed!");
+      }
+  }
+
   return (
     <div>
+      {open && (
+        <InputUi setOpen={setOpen} />
+      )}
+      <SecondaryHeader callHandleSubmit={callHandleSubmit} />
       <Card x-chunk="dashboard-06-chunk-0">
         <CardHeader>
           <CardTitle>Students</CardTitle>
@@ -37,7 +73,7 @@ const Students = () => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <TableComponent data={students} />
+          <TableComponent data={students} handleDelete={handleDelete} />
         </CardContent>
         <CardFooter>
           <div className="text-xs text-muted-foreground">
